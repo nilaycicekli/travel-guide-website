@@ -1,0 +1,16 @@
+h3 {
+  text-align: center;
+  color: red;
+}
+
+p {
+  margin-left: 250px;
+  margin-right: 250px;
+  text-align: center;
+  padding: 15px;
+}
+
+.button{
+    margin-bottom: 30px;
+    width: 150px;
+}

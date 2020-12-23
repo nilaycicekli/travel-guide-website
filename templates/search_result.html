@@ -1,0 +1,554 @@
+{% extends "index.html" %}
+{% load static  %}
+
+    <!-- <link rel='stylesheet' href='https://unpkg.com/bootstrap@4.0.0/dist/css/bootstrap.css'> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">  -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+    <!-- <link rel='stylesheet' href='https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css'> -->
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<style>
+  .far {
+    color: red;
+  }
+</style>
+{% endblock link %}
+    
+ {% block content %}
+   
+  <body>
+    <div class="container">
+      <!-- carousel -->
+      <div class="container-fluid mx-3">
+        <p class="mx-3 my-5">354 search results..</p>
+        <h2 class="mx-3 my-3">Best of Istanbul</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner row w-100 mx-auto">
+            <div class="carousel-item col-md-4 active">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  src="https://images.unsplash.com/photo-1560856311-69382e596cd4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjR8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Card image cap"
+                />
+                <span class="text-center my-1">
+                  <i
+                    id="like"
+                    onclick="changeClass(this.id)"
+                    class="far fa-heart"
+                  ></i
+                ></span>
+
+                <div class="card-body">
+                  <h4 class="card-title">Card 1</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4">
+              <div class="card">
+                <!-- <div class="card-body">
+              <h4 class="card-title">Card 2</h4>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is
+                a little bit longer.</p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div> -->
+                <img
+                  class="card-img-top"
+                  src="https://images.unsplash.com/photo-1549916438-5e8ec6964307?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzF8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Card image cap"
+                />
+
+                <span class="text-center my-1"
+                  ><i
+                    id="like2"
+                    onclick="changeClass(this.id)"
+                    class="far fa-heart"
+                  ></i
+                ></span>
+
+                <div class="card-body">
+                  <h4 class="card-title">Card 2</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80"
+                  alt="Card image cap"
+                />
+                <span class="text-center my-1"
+                  ><i
+                    id="like3"
+                    onclick="changeClass(this.id)"
+                    class="far fa-heart"
+                  ></i
+                ></span>
+
+                <div class="card-body">
+                  <h4 class="card-title">Card 3</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  src="https://images.unsplash.com/photo-1518084823714-2f59a7315a39?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8aXN0YW5idWx8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Card image cap"
+                />
+                <span class="text-center my-1"
+                  ><i
+                    id="like4"
+                    onclick="changeClass(this.id)"
+                    class="far fa-heart"
+                  ></i
+                ></span>
+
+                <div class="card-body">
+                  <h4 class="card-title">Card 4</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  src="https://images.unsplash.com/photo-1490079397423-a3931fd75940?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fGlzdGFuYnVsfGVufDB8fDB8&auto=format&fit=crop&w=500&q=60"
+                  alt="Card image cap"
+                />
+                <span class="text-center my-1"
+                  ><i
+                    id="like5"
+                    onclick="changeClass(this.id)"
+                    class="far fa-heart"
+                  ></i
+                ></span>
+
+                <div class="card-body">
+                  <h4 class="card-title">Card 5</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  src="https://images.unsplash.com/photo-1556994526-7408107943e0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzB8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Card image cap"
+                />
+                <span class="text-center my-1"
+                  ><i
+                    id="like6"
+                    onclick="changeClass(this.id)"
+                    class="far fa-heart"
+                  ></i
+                ></span>
+
+                <div class="card-body">
+                  <h4 class="card-title">Card 6</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  src="https://images.unsplash.com/photo-1526586860017-748c7c448ab6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Card image cap"
+                />
+                <span class="text-center my-1"
+                  ><i
+                    id="like7"
+                    onclick="changeClass(this.id)"
+                    class="far fa-heart"
+                  ></i
+                ></span>
+
+                <div class="card-body">
+                  <h4 class="card-title">Card 7</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-12 text-center mt-4">
+                <a
+                  class="btn btn-outline-secondary mx-1 prev"
+                  href="javascript:void(0)"
+                  title="Previous"
+                >
+                  <i class="fa fa-lg fa-chevron-left"></i>
+                </a>
+                <a
+                  class="btn btn-outline-secondary mx-1 next"
+                  href="javascript:void(0)"
+                  title="Next"
+                >
+                  <i class="fa fa-lg fa-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- carousel ends here -->
+
+      <!-- tag clouds -->
+      <div class="container mx-3 my-5 text-center">
+        <button type="button" class="btn btn-outline-info">
+          Food and Drink
+        </button>
+        <button type="button" class="btn btn-outline-info">
+          Entertainement
+        </button>
+        <button type="button" class="btn btn-outline-info">
+          Art and Culture
+        </button>
+        <button type="button" class="btn btn-outline-info">Photos</button>
+        <button type="button" class="btn btn-outline-info">Travel</button>
+      </div>
+
+      <!-- all results -->
+      <div class="container mx-3 my-3">
+        <p><b> All Search Results</b></p>
+        <div class="card-deck my-3">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80"
+              class="card-img-top"
+              alt="..."
+            />
+
+            <span class="text-center my-1"
+              ><i
+                id="i1"
+                onclick="changeClass(this.id)"
+                class="far fa-heart"
+              ></i
+            ></span>
+
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+             
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+                <div class="col">
+                  <div class="text-right">
+                    3.6<i class="fas fa-star" style="color: #ecc535"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1560856311-69382e596cd4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjR8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              class="card-img-top"
+              alt="..."
+            />
+            <span class="text-center my-1"
+              ><i
+                id="i2"
+                onclick="changeClass(this.id)"
+                class="far fa-heart"
+              ></i
+            ></span>
+
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This card has supporting text below as a natural lead-in to
+                additional content.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+                <div class="col">
+                  <div class="text-right">
+                    4.2<i class="fas fa-star" style="color: #ecc535"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80"
+              class="card-img-top"
+              alt="..."
+            />
+            <span class="text-center my-1"
+              ><i
+                id="i3"
+                onclick="changeClass(this.id)"
+                class="far fa-heart"
+              ></i
+            ></span>
+
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This card has even longer content
+                than the first to show that equal height action.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+              
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+                <div class="col">
+                  <div class="text-right">
+                    4.7<i class="fas fa-star" style="color: #ecc535"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- card deck 2 -->
+        <div class="card-deck my-3">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1490079397423-a3931fd75940?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fGlzdGFuYnVsfGVufDB8fDB8&auto=format&fit=crop&w=500&q=60"
+              class="card-img-top"
+              alt="..."
+            />
+            <span class="text-center my-1"
+              ><i
+                id="i4"
+                onclick="changeClass(this.id)"
+                class="far fa-heart"
+              ></i
+            ></span>
+
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+             
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+                <div class="col">
+                  <div class="text-right">
+                    2.5<i class="fas fa-star" style="color: #ecc535"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1518084823714-2f59a7315a39?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8aXN0YW5idWx8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              class="card-img-top"
+              alt="..."
+            />
+            <span class="text-center my-1"
+              ><i
+                id="i5"
+                onclick="changeClass(this.id)"
+                class="far fa-heart"
+              ></i
+            ></span>
+
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This card has supporting text below as a natural lead-in to
+                additional content.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+                <div class="col">
+                  <div class="text-right">
+                    5.0<i class="fas fa-star" style="color: #ecc535"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1560856311-69382e596cd4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjR8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              class="card-img-top"
+              alt="..."
+            />
+            <span class="text-center my-1"
+              ><i
+                id="i6"
+                onclick="changeClass(this.id)"
+                class="far fa-heart"
+              ></i
+            ></span>
+
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This card has even longer content
+                than the first to show that equal height action.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+             
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <a href="#" class="btn btn-primary">More</a>
+                </div>
+                <div class="col">
+                  <div class="text-right">
+                    4.0<i class="fas fa-star" style="color: #ecc535"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- all results end here -->
+    </div>
+    <!-- main div ends here -->
+
+    <script type="text/javascript">
+      function changeClass(id) {
+        // Code examples from above
+        if (document.getElementById(id).classList.contains("far"))
+          document.getElementById(id).classList.toggle("fas");
+      }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- <script src='https://unpkg.com/jquery@3.3.1/dist/jquery.js'></script> -->
+    <!-- <script src='https://unpkg.com/popper.js@1.12.9/dist/umd/popper.js'></script> -->
+    <!-- <script src='https://unpkg.com/bootstrap@4.0.0/dist/js/bootstrap.js'></script> -->
+    <!-- <script
+      src="https://kit.fontawesome.com/e187c73c77.js"
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+ {% endblock content %}

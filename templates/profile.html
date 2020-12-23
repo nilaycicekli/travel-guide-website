@@ -1,0 +1,173 @@
+{% extends "index2.html" %}
+        {% block link %}
+        <title>Profile</title>
+        <style>
+            .button {
+                background-color: black; 
+                border: 1px solid black;
+                border-radius: 32px;
+                color: black;
+                padding: 35px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 20px;
+                opacity: 0.9;
+                transition: 0.3s;
+                cursor: pointer;
+                width: 14vw;
+    
+              }
+              .button:hover {opacity: 1}
+              .button1 {background-color: #6aa84f}
+              .button2 {background-color: #c27ba0}
+              .button3 {background-color: #e06666}
+              
+    
+            .map-container-5{
+                overflow:hidden;
+                padding-bottom:56.25%;
+                position:relative;
+                height:0;
+                }
+            .map-container-5 iframe{
+                left:0;
+                top:0;
+                height:70%;
+                width:100%;
+                position:absolute;
+                }
+            
+        </style>
+        {% endblock link %}
+  
+{% block content %}
+  
+
+
+<body>
+    <!-- Main container -->
+    <div class="container ">
+
+<!-- container for bio and buttons -->
+<div class="container " style="height:120vh; width:100vw">
+ 
+        <div class="container px-lg-5  " style="padding:50px;">
+
+            <div class="container">
+            <div class="d-flex  row align-items-center justify-content-between">
+                    <div class="col d-flex">
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                              <li class="breadcrumb-item" aria-current="page"><a href="#">Profile</a></li>
+                              
+                            </ol>
+                            
+                         </nav>
+
+                    </div>
+                    <div class="col text-right " >
+                        <a style="color:black" href="{% url 'edit_profile' %}">Edit <i class="fas fa-user-edit"></i></a>
+                    </div>
+               
+              </div>
+            </div>
+
+            <div class="row mx-lg-n5">
+                <div class="col py-3 px-lg-5 ">
+                    <div class="media">
+                        <img src="http://loremflickr.com/100/100/headshot" class="align-self-center mr-3" alt="...">
+                        <div class="media-body">
+                            <h5 class="mt-0">John Doe</h5>
+                            <p class="text-justify">Cas sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                sollicitudin.
+                                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
+                                nunc
+                                ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.
+                                Cum
+                                sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container  d-flex justify-content-center"  style="padding:40px;">
+            <div class="row mx-lg-n5 align-items-start">
+                <div class="col py-3 px-lg-5 " class=" " >
+                    <!-- <img src='https://placehold.it/120x120/6aa84f?text=Published' alt='' /> -->
+                    <button  class="button button1"><span><i class="far fa-newspaper fa-3x"></i><br> Published</span></button>
+
+                </div>
+                <div class="col py-3 px-lg-5 " class=" "style="font-size: 24px;">
+                    <!-- <img src='https://placehold.it/120x120/c27ba0?text=Liked' alt='' /> -->
+                    <button class="button button2"  > <span><i class="fab fa-gratipay fa-3x"></i><br> Liked</span> </button>
+
+
+                </div>
+                <div class="col py-3 px-lg-5 " class=" "style="font-size: 24px;">
+                    <button class="button button3"  ><span><i class="fas fa-bookmark fa-3x"></i><br> Saved</span></button>
+                    <!-- <img src='https://placehold.it/120x120/e06666?text=Saved' alt='' /> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- google maps -->
+        <div>
+<!--Grid row-->
+<div class="row">
+  
+    <!--Grid column-->
+    <div class="col mb-4">
+  
+      <!--Card-->
+      <div class="card card-cascade narrower">
+  
+        <!--Card image-->
+        <div class="view view-cascade gradient-card-header peach-gradient">
+          <h5 class="mb-0">My Travel History</h5>
+        </div>
+        <!--/Card image-->
+  
+        <!--Card content-->
+        <div class="card-body card-body-cascade text-center">
+  
+          <!--Google map-->
+          <div id="map-container-google-9" class="z-depth-1-half map-container-5" style="height: 200px;">
+            <iframe src="https://maps.google.com/maps?q=Istanbul&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+              style="border:0" allowfullscreen></iframe>
+            <!-- src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed" -->
+            <!-- src="https://maps.google.com/maps?q=Madryt&t=&z=13&ie=UTF8&iwloc=&output=embed" -->
+          </div>
+  
+  
+        </div>
+        <!--/.Card content-->
+  
+      </div>
+      <!--/.Card-->
+  
+    </div>
+    <!--Grid column-->
+  
+  </div>
+  <!--Grid row-->
+  <!-- google maps ended -->
+        </div>
+<!-- 
+      
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e187c73c77.js" crossorigin="anonymous"></script> -->
+            
+</body>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% load static %}
+{% block link %}
+  
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% endblock link %}
+ 
+    {% block content %}
+      
+  <body>
+    <div class="wrapper">
+      <form class="form-signin" action="{% url 'login' %}">
+        <h2 class="text-center form-signin-heading">Register</h2>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="Name"
+          required=""
+          autofocus=""
+        />
+        <br>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          placeholder="Email Address"
+          required=""
+        />
+        <br>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          placeholder="Password"
+          required=""
+        />
+        <hr />
+        <button class="btn btn btn-info btn-block" type="submit">
+          Sign Up
+        </button>
+        <small>Already have an account? </small><br />
+        <small> <a href="{% url 'login' %}">Log in here!</a></small>
+      </form>
+    </div>
+  </body>
+  {% endblock content %}

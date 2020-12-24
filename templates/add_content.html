@@ -1,0 +1,33 @@
+{% extends "index2.html" %}
+{% block content %}
+  <body>
+      <div class="container  my-5 ">
+          <div class="content"> 
+        <form action="{% url 'content' %}">
+            <div class="form-group">
+                <label for="usr">Title:</label>
+                <input type="text" class="form-control" id="usr">
+              </div>
+              <div class="form-group">
+                <label for="comment">Content:</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="sel1">Select District:</label>
+                <select class="form-control" id="sel1">
+                  <option>Şile</option>
+                  <option>Beyoğlu</option>
+                  <option>Kadıköy</option>
+                  <option>Sarıyer</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              </div>
+            <a href="{% url 'content' %}"><button type="submit" class="btn btn-primary">Publish</button></a>
+          </form>
+      </div>
+    </div>
+  </body>
+{% endblock content %}

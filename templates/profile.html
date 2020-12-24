@@ -50,7 +50,7 @@
     <div class="container ">
 
 <!-- container for bio and buttons -->
-<div class="container " style="height:120vh; width:100vw">
+<div class="container " style="height:100vh; width:100vw">
  
         <div class="container px-lg-5  " style="padding:50px;">
 
@@ -60,7 +60,7 @@
 
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                              <li class="breadcrumb-item"><a href="{% url 'home2' %}">Home</a></li>
                               <li class="breadcrumb-item" aria-current="page"><a href="#">Profile</a></li>
                               
                             </ol>
@@ -100,17 +100,17 @@
             <div class="row mx-lg-n5 align-items-start">
                 <div class="col py-3 px-lg-5 " class=" " >
                     <!-- <img src='https://placehold.it/120x120/6aa84f?text=Published' alt='' /> -->
-                    <button  class="button button1"><span><i class="far fa-newspaper fa-3x"></i><br> Published</span></button>
+                   <a href="{% url 'liked' %}"> <button class="button button1"><span><i class="far fa-newspaper fa-3x"></i><br> Published</span></button></a>
 
                 </div>
                 <div class="col py-3 px-lg-5 " class=" "style="font-size: 24px;">
                     <!-- <img src='https://placehold.it/120x120/c27ba0?text=Liked' alt='' /> -->
-                    <button class="button button2"  > <span><i class="fab fa-gratipay fa-3x"></i><br> Liked</span> </button>
+                   <a href="{% url 'liked' %}"> <button class="button button2"  > <span><i class="fab fa-gratipay fa-3x"></i><br> Liked</span> </button></a>
 
 
                 </div>
                 <div class="col py-3 px-lg-5 " class=" "style="font-size: 24px;">
-                    <button class="button button3"  ><span><i class="fas fa-bookmark fa-3x"></i><br> Saved</span></button>
+                   <a href="{% url 'saved' %}"> <button class="button button3"  ><span><i class="fas fa-bookmark fa-3x"></i><br> Saved</span></button></a>
                     <!-- <img src='https://placehold.it/120x120/e06666?text=Saved' alt='' /> -->
                 </div>
             </div>

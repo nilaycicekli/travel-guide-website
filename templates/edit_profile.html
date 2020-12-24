@@ -58,7 +58,7 @@
                     </ul>
                     <div class="tab-content pt-3">
                       <div class="tab-pane active">
-                        <form class="form" novalidate="">
+                        <form action="{% url 'profile' %}" class="form" novalidate="">
                           <div class="row">
                             <div class="col">
                               <div class="row">
@@ -163,9 +163,9 @@
       </div>
       <div class="row">
         <div class="col d-flex justify-content-center">
-          <button href="{% url 'profile' %}" class="btn btn-primary profile-button" type="button">
+        <a href="{% url 'profile' %}">  <button  class="btn btn-primary profile-button" type="submit">
             Save Changes
-          </button>
+          </button></a>
         </div>
       </div>
     </div>

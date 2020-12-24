@@ -1,4 +1,9 @@
 {% extends "index.html" %}
+{% load static %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  
+{% endblock link %}
 {% block content %}
 <div class="container"> 
     <h3>Who are we?</h3>

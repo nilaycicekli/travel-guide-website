@@ -8,7 +8,8 @@
 
   <body>
     <div class="wrapper">
-      <form class="form-signin" action="{% url 'home2' %}">
+      <form class="form-signin" action="{% url 'home2' %}" method="POST">
+        {% csrf_token %}
         <h2 class="text-center form-signin-heading">Login</h2>
         <input
           type="text"

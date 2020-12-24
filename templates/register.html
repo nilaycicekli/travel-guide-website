@@ -10,7 +10,8 @@
       
   <body>
     <div class="wrapper">
-      <form class="form-signin" action="{% url 'login' %}">
+      <form class="form-signin" action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
         <h2 class="text-center form-signin-heading">Register</h2>
         <input
           type="text"

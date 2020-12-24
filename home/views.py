@@ -26,6 +26,19 @@ def profile(request):
 def edit_profile(request):
     return render(request,'edit_profile.html')
 
+def content(request):
+    return render(request,'content.html')
+
+def liked(request):
+    return render(request,'liked.html')
+    
+def saved(request):
+    return render(request,'saved.html')
+
+def add_content(request):
+    return render(request,'add_content.html')
+
+
 
 
 

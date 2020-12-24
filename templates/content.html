@@ -1,0 +1,144 @@
+{% extends "index2.html" %}
+{% block content %}
+  <body>
+    <div class="container">
+      <div class="row content">
+        <div class="col">
+          <h4><small>RECENT POSTS</small></h4>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'home2' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Content
+              </li>
+            </ol>
+          </nav>
+          <hr />
+
+          <div class="row">
+            <div class="col">
+              <h2>I Loved Kadıköy</h2>
+            </div>
+
+            <div class="text-right">
+              <button type="button" class="btn btn-outline-secondary">
+                <i id="mark1"
+                onclick="changeClass(this.id)" class="far fa-bookmark" ></i>
+              </button>
+
+              <button type="button" class="btn btn-outline-danger">
+                <i id="like1"
+                onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
+              </button>
+            </div>
+          </div>
+          <h5>
+            <span class="glyphicon glyphicon-time"></span> Post by Jane Dane,
+            Sep 27, 2015.
+          </h5>
+          <h5>
+            <span class="label label-danger">I've been in: </span>
+            <span class="label label-primary">KADIKÖY</span>
+          </h5>
+          <br />
+           
+
+         
+          
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc
+            faucibus a pellentesque sit amet porttitor eget. Lorem ipsum dolor
+            sit amet consectetur adipiscing elit ut aliquam. Arcu non odio
+            euismod lacinia at. In fermentum posuere urna nec tincidunt
+            praesent. Dignissim sodales ut eu sem integer. Ac turpis egestas sed
+            tempus urna et. Enim nec dui nunc mattis enim. Orci sagittis eu
+            volutpat odio. At tellus at urna condimentum mattis pellentesque.
+            Posuere lorem ipsum dolor sit amet consectetur adipiscing. Facilisis
+            volutpat est velit egestas dui. Amet facilisis magna etiam tempor
+            orci eu. Ut aliquam purus sit amet luctus. Eu nisl nunc mi ipsum
+            faucibus vitae aliquet nec. Senectus et netus et malesuada.
+          </p>
+
+          <p><span class="badge">2</span> Comments:</p>
+          <br />
+          <div class="row">
+            <div class="col-sm-2 text-center">
+              <img
+                src="https://image.flaticon.com/icons/png/512/194/194938.png"
+                class="img-circle"
+                height="65"
+                width="65"
+                alt="Avatar"
+              />
+            </div>
+            <div class="col-sm-10">
+              <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
+              <p>
+                Keep up the GREAT work! I am cheering for you!! Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <i class="fas fa-star" style="color: #f18728"></i>
+              <i class="fas fa-star" style="color: #f18728"></i>
+              <i class="fas fa-star-half-alt" style="color: #f18728"></i>
+              <i class="far fa-star" style="color: #f18728"></i>
+              <i class="far fa-star" style="color: #f18728"></i>
+
+              <br />
+            </div>
+            <div class="col-sm-2 text-center">
+              <img
+                src="https://cdn.iconscout.com/icon/free/png-256/avatar-367-456319.png"
+                class="img-circle"
+                height="65"
+                width="65"
+                alt="Avatar"
+              />
+            </div>
+            <div class="col-sm-10">
+              <h4>
+                John Row
+                <small>Sep 25, 2015, 8:25 PM </small>
+              </h4>
+
+              <p>
+                I am so happy for you man! Finally. I am looking forward to read
+                about your trendy life. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </p>
+              <i class="fas fa-star" style="color: #f18728"></i>
+              <i class="fas fa-star" style="color: #f18728"></i>
+              <i class="fas fa-star" style="color: #f18728"></i>
+              <i class="fas fa-star" style="color: #f18728"></i>
+              <i class="fas fa-star-half-alt" style="color: #f18728"></i>
+
+              <br />
+              <h4>Leave a Comment:</h4>
+              <form role="form">
+                <div class="form-group">
+                  <textarea class="form-control" rows="3" required></textarea>
+                </div>
+
+                <br />
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+
+              
+              <br /><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <script type="text/javascript">
+      function changeClass(id) {
+        // Code examples from above
+        if (document.getElementById(id).classList.contains("far"))
+          document.getElementById(id).classList.toggle("fas");
+      }
+    </script>
+  </body>
+  {% endblock  %}

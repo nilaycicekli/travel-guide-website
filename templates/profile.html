@@ -75,28 +75,39 @@
               </div>
             </div>
 
-            <div class="row mx-lg-n5">
-                <div class="col py-3 px-lg-5 ">
-                    <div class="media">
-                        <img src="http://loremflickr.com/100/100/headshot" class="align-self-center mr-3" alt="...">
-                        <div class="media-body">
-                            <h5 class="mt-0">John Doe</h5>
-                            <p class="text-justify">Cas sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                sollicitudin.
-                                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
-                                nunc
-                                ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.
-                                Cum
-                                sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            <div class="card">
+                <div class="card-body">
+                  <div class="e-profile">
+                    <div class="row">
+                      <div class="col-12 col-sm-auto mb-3">
+                        <div class="mx-auto" style="width: 140px">
+                          <div class="d-flex justify-content-center align-items-center rounded" style="
+                                height: 140px;
+                                background-color: rgb(233, 236, 239);
+                              ">
+                              {% if request.user.profile.pic %}
+                              <a href="{% url 'edit_profile' %}">
+                                <img width="140px" height="140px" src="{{ request.user.profile.pic.url }}"
+                                  class="align-self-center mr-3" alt="profile photo" height="150px">
+                              </a>
+                              {% endif %}
+                            
+                          </div>
                         </div>
+                      </div>
+                      <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.username}}</h4>
+                        <p class="mb-0">{{user.email}}</p>
+                        <p class="mb-0">{{user.profile.location}}</p>
+                        <div class="mt-2">
+                          <p>{{ user.profile.bio }}</p>
+                        </div>
+                       
+                      </div>
                     </div>
-                </div>
-
-            </div>
         </div>
 
-        <div class="container  d-flex justify-content-center"  style="padding:40px;">
+        <div class="container  d-flex justify-content-center"  style="padding:30px;">
             <div class="row mx-lg-n5 align-items-start">
                 <div class="col py-3 px-lg-5 " class=" " >
                     <!-- <img src='https://placehold.it/120x120/6aa84f?text=Published' alt='' /> -->

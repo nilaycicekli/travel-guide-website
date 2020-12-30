@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.models import Group
 
 from .forms import CreateUserForm
+from pprofile.models import Profile
 
 # Create your views here.
 def register(request):
@@ -12,14 +14,16 @@ def register(request):
         form = CreateUserForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            messages.success(request,"account is created for"+username)
-            user = authenticate(username=username,password=password)
 
-            login(request, user)
-            return redirect('home')
+
+            # log in the user as soon as registered
+            user = authenticate(username=username,password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('profile')
 
     else:
         form = CreateUserForm()

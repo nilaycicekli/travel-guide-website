@@ -6,9 +6,9 @@ class Content(models.Model):
     title=models.CharField(max_length=200, null=True, blank=True,default="")
     body= models.TextField(max_length=200, null=True, blank=True, default="This is my first blog post!")
     pic = models.ImageField(upload_to="content",default="", blank=True, null=True)
-    author= models.OneToOneField(User, null=True, on_delete=models.CASCADE,related_name="content")
+    author= models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="content")
     district=models.ForeignKey('District', null=True, on_delete=models.CASCADE,related_name="districtContent")
-    tag=models.ManyToManyField('Tag',  related_name="tagContent")
+    tag=models.ManyToManyField('Tag',  related_name="content", blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -20,7 +20,7 @@ class Comment(models.Model):
     text=models.TextField(max_length=200, null=True, blank=True, default="This content is amazing!")
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     user=models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="comment")
-    comment=models.ForeignKey('Content', null=True, on_delete=models.CASCADE,related_name="content")
+    comment=models.ForeignKey('Content', null=True, on_delete=models.CASCADE,related_name="comment")
 
     def __str__(self):
         return self.user.username

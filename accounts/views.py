@@ -44,5 +44,5 @@ def register(request):
 #             messages.info(request, 'username or password is incorrect')
 
 
-    context = {}
-    return render(request, 'registration/login.html')
+    # context = {}
+    # return render(request, 'registration/login.html')

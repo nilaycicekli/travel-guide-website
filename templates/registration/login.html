@@ -1,51 +1,49 @@
-{% extends "index.html" %}
-{% load static %}
-{% block link %}
+{% extends "index.html" %} {% load static %} {% block link %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-{% endblock link %}
-{% block content %}
+{% endblock link %} {% block content %}
 
+<body>
+  <div class="wrapper">
+    <form class="form-signin" action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      <h2 class="text-center form-signin-heading">Login</h2>
 
-  <body>
-    <div class="wrapper">
+      {% for field in form %}
+      <p>{{ field }}</p>
+      {% endfor %}
 
-      <form class="form-signin" action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        <h2 class="text-center form-signin-heading">Login</h2>
+      <hr />
+      {{ form.errors }} {% for message in messages %}
+      <p id="messages">{{message}}</p>
+      {% endfor %}
 
-        {% for field in form  %}
-        <p>{{ field }}</p>
-        {% endfor %}
-        
-        <hr />
-       {{ form.errors }}
-       {% for message in messages %}
-       <p id="messages">{{message}}</p>
-     {% endfor %}
-        <input class="btn btn btn-info btn-block" type="submit" value="login">
-        <input type="hidden" name="next" value="{{ next }}">
+      <input
+        class="btn btn btn-info bg-dark btn-block"
+        type="submit"
+        value="login"
+      />
+      <input type="hidden" name="next" value="{{ next }}" />
+
+      <div style="text-align: center">
         <small>Don't have an account? </small><br />
         <small> <a href="{% url 'register' %}">Register here!</a></small>
-     
+      </div>
 
       {% if next %}
-        <p>hey you can't acces that page.</p>
+      <p>hey you can't acces that page.</p>
       {% endif %}
-      </form>
-    </div>
+    </form>
+  </div>
 
-    
-    <script>
-      
-      //Query All input fields
-      var form_fields = document.getElementsByTagName('input')
-      form_fields[2].placeholder='username..';
-      form_fields[3].placeholder='enter password...';
-      
-      
-      for (var field in form_fields){	
-      form_fields[field].className += ' form-control'
-      }
-      </script>
-  </body>
-  {% endblock content %}
+  <script>
+    //Query All input fields
+    var form_fields = document.getElementsByTagName("input");
+    form_fields[2].placeholder = "username..";
+    form_fields[3].placeholder = "enter password...";
+
+    for (var field in form_fields) {
+      form_fields[field].className += " form-control";
+    }
+  </script>
+</body>
+{% endblock content %}

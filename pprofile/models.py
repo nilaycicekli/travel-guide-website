@@ -8,6 +8,8 @@ class Profile(models.Model):
 	location = models.CharField(max_length=200, null=True, blank=True,default="")
 	bio = models.TextField(max_length=200, null=True, blank=True, default="Hello, I am a new user! ")
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
+	saved=models.ManyToManyField('home.Content',related_name="saved")
+	liked=models.ManyToManyField('home.Content',related_name="liked")
 
 	def __str__(self):
 		return self.user.username

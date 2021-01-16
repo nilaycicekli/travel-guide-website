@@ -15,7 +15,13 @@
 </head>
 
 <body>
+
+  {%if user.is_authenticated %}
+  {% include "navbar2.html" %}
+  {%else%}
   {% include "navbar.html" %}
+  {%endif%}
+
   {% block content %}
 
   {% endblock %}

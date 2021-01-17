@@ -4,7 +4,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import ContentForm
 from .models import Content
-
+from .models import Comment
+from .forms import CommentForm
 # Create your views here.
 
 def index(request):
@@ -19,11 +20,9 @@ def search_result(request):
 
 def content(request, id):
     content = get_object_or_404(Content, id=id)
-    # form = CommentForm()
-    # tags_queryset = content.tag.all()
-    # tags = [i for i in tags_queryset]
-    
-    return render(request,'content.html',{"content":content})
+    form = CommentForm()
+   
+    return render(request,'content.html',{"content":content,"form":form})
 
 
 @login_required
@@ -36,8 +35,8 @@ def add_content(request):
             content.author = user
             content.save()
             content.tag.set(form.cleaned_data['tag'])
-            # return redirect('content', id=content.id)
-            return redirect('content')
+            return redirect('content', id=content.id)
+            #return redirect('content')
     else:
         form = ContentForm()
     return render(request,'add_content.html',{'form':form})
@@ -95,7 +94,33 @@ def save(request,id):
 
     # return redirect('content', id=id)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    
+
+#Add Comment
+@login_required
+def add_comment(request,id):
+    user=request.user
+    content = get_object_or_404(Content, id=id)
+    if request.method=="POST":
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.user=user
+            comment.save()
+            return redirect("content",id=content.id)
+    else:
+        form=CommentForm()
+    return render(request,'content.html',{'form':form,'content':content})
+
+
+
+#Remove Comment
+@login_required
+def remove_comment(request,id):
+    user=request.user
+    comment=get_object_or_404(Comment,id=id)
+    if user==comment.user:
+        comment.delete()
+    return redirect("content",id=comment.content.id)
 
 
 

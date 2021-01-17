@@ -18,11 +18,11 @@ class Content(models.Model):
         return self.title
 
 class Comment(models.Model):
-    rate=models.IntegerField()
-    text=models.TextField(max_length=200, null=True, blank=True, default="This content is amazing!")
+    rate=models.IntegerField(null=True,default=0)
+    text=models.TextField(max_length=200, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     user=models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="comment")
-    comment=models.ForeignKey('Content', null=True, on_delete=models.CASCADE,related_name="comment")
+    content=models.ForeignKey('Content', null=True, on_delete=models.CASCADE,related_name="comment")
 
     def __str__(self):
         return self.user.username
@@ -49,5 +49,4 @@ class District(models.Model):
     city=models.ForeignKey('City', null=True, on_delete=models.CASCADE,related_name="district")
     def __str__(self):
         return self.name
-
 

@@ -6,26 +6,26 @@
 {% block content %}
   <body>
     <div class="container center my-3 ">
-        <p style="text-align: center"><b> SAVED</b></p>
+        <p style="text-align: center"><b> PUBLISHED</b></p>
         <div class="row">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
               <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Saved</li>
+              <li class="breadcrumb-item active" aria-current="page">Published</li>
             </ol>
           </nav>
         </div>
 
        
         <div class="row">
-        {% for content in request.user.liked.all %}
+        {% for content in request.user.content.all %}
           <!--CARD1-->
           <div class="col-md-4">
             <div class="card">
-              {% if content.pic %}
+                {% if content.pic %}
+                  
                 
-             
               <img
                 src="{{ content.pic.url }}"
                 class="card-img-top"
@@ -53,6 +53,12 @@
                   <div class="col">
                     <div class="text-right">
 
+                        <button type="button" class="btn btn-outline-secondary">
+                            <a href="{% url 'delete_content' content.id %}">
+                              <i id="trash" class="fas fa-trash" style="color: red" ></i>
+                            </a>
+                          </button>
+
                       <button type="button" class="btn btn-outline-secondary">
                         <a href="{% url 'save' content.id %}">
                           {% if request.user not in content.savelist.all %}
@@ -63,8 +69,7 @@
                         </a>
                       </button>
           
-                      <!-- I don't want to use like icon in liked page -->
-                      <!-- <button type="button" class="btn btn-outline-danger">
+                      <button type="button" class="btn btn-outline-danger">
                         <a href="{% url 'like' content.id %}">
                           {% if request.user not in content.likelist.all %}
                           <i id="like1"
@@ -74,7 +79,7 @@
                           class="fas fa-heart" style="color: red"></i>
                           {% endif %}
                         </a>
-                      </button> -->
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -84,11 +89,6 @@
        
           {% endfor %}
         </div>
-      
-
-
-
-
 
       </div>
 

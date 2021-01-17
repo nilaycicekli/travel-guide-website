@@ -42,6 +42,14 @@ def add_content(request):
         form = ContentForm()
     return render(request,'add_content.html',{'form':form})
 
+@login_required
+def delete_content(request,id):
+    content = get_object_or_404(Content, id=id)
+    if request.user == content.author:
+        content.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 
 # #Like
 # @login_required

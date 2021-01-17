@@ -40,3 +40,7 @@ def liked(request):
 @login_required
 def saved(request):
     return render(request,'saved.html')
+
+@login_required
+def published(request):
+    return render(request,'published.html')

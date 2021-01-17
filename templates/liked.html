@@ -23,14 +23,18 @@
           <!--CARD1-->
           <div class="col-md-4">
             <div class="card">
+              {% if content.pic %}
+                
               <img
-                src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80"
+                src="{{ content.pic.url }}"
                 class="card-img-top"
                 alt="..."
               />
+              {% endif %}
+
   
               <div class="text-right">
-                5.0<i class="fas fa-star" style="color: #ecc535"></i>
+               5.0-change this<i class="fas fa-star" style="color: #ecc535"></i>
               </div>
               <div class="card-body">
                 <h5 class="card-title">{{ content.title }}</h5>

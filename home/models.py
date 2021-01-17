@@ -11,6 +11,8 @@ class Content(models.Model):
     tag=models.ManyToManyField('Tag',  related_name="content", blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    likelist = models.ManyToManyField(User, blank=True, related_name="liked")
+    savelist = models.ManyToManyField(User, blank=True, related_name="saved")
 
     def __str__(self):
         return self.title

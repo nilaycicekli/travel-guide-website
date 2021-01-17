@@ -23,13 +23,32 @@
 
             <div class="text-right">
               <button type="button" class="btn btn-outline-secondary">
-                <i id="mark1"
-                onclick="changeClass(this.id)" class="far fa-bookmark" ></i>
+                <a href="{% url 'save' content.id %}">
+                 
+                  {% if request.user not in content.savelist.all %}
+                  <i id="mark1" class="far fa-bookmark" ></i>
+                  {% else %}
+                  <i id="mark1" class="fas fa-bookmark" ></i>
+                  {% endif %}
+
+                 
+                </a>
+               
               </button>
 
               <button type="button" class="btn btn-outline-danger">
-                <i id="like1"
-                onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
+                <a href="{% url 'like' content.id %}">
+                 
+                  {% if request.user not in content.likelist.all %}
+                  <i id="like1"
+                   class="far fa-heart" style="color: red"></i>
+                  {% else %}
+                  <i id="like1"
+                  onclick="changeClass(this.id)" class="fas fa-heart" style="color: red"></i>
+                  {% endif %}
+
+                 
+                </a>
               </button>
             </div>
           </div>

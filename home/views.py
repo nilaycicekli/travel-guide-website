@@ -42,6 +42,51 @@ def add_content(request):
     return render(request,'add_content.html',{'form':form})
 
 
+# #Like
+# @login_required
+# def like(request,id):
+#     user = request.user
+#     content = get_object_or_404(Content, id=id)
+    
+#     if not content.likes.filter(by=user,content=content):
+#         like = Like(content=content,by = user)
+#         like.save()
+#     else:
+#         like = get_object_or_404(Like,by=user, content=content)
+#         like.delete()
+
+#     return redirect('content', id=id)
+
+#Like/Unlike 
+@login_required
+def like(request,id):
+    user = request.user
+    content = get_object_or_404(Content, id=id)
+
+    if user not in content.likelist.all():
+        content.likelist.add(user)
+
+    else:
+       content.likelist.remove(user)
+
+    return redirect('content', id=id)
+
+# Save / Discard
+@login_required
+def save(request,id):
+    user = request.user
+    content = get_object_or_404(Content, id=id)
+
+    if user not in content.savelist.all():
+        content.savelist.add(user)
+
+    else:
+        content.savelist.remove(user)
+
+    return redirect('content', id=id)
+    
+
+
 
 
 

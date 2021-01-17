@@ -5,8 +5,11 @@ urlpatterns=[
     path('',views.home,name="index"),
     path('home',views.home,name="home"),
     path('search_result',views.search_result,name="search_result"),
-    path('content/<int:id>',views.content,name="content"),
-    path('add_content',views.add_content,name="add_content"),
+    path('content/<int:id>',views.content,name="content"), # to view content details
+    path('add_content',views.add_content,name="add_content"), # to create and publish new content
+    path('content/<int:id>/like',views.like,name="like"), # to like/unlike the content
+    path('content/<int:id>/save',views.save,name="save"), # to save/discard the content
+
     
 ]
 

@@ -1,316 +1,97 @@
 {% extends "index.html" %}
 {% block link %}
-<style>
-  .fas {
-    color: red;
-  }
-</style>
 {% endblock link %}
+
+
 {% block content %}
-  
   <body>
-    <div class="container center my-3">
-      <p style="text-align: center"><b> SAVED</b></p>
-      <div class="row">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Saved</li>
-          </ol>
-        </nav>
+    <div class="container center my-3 ">
+        <p style="text-align: center"><b> SAVED</b></p>
+        <div class="row">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Liked</li>
+            </ol>
+          </nav>
+        </div>
+
+       
+        <div class="row">
+        {% for content in request.user.liked.all %}
+          <!--CARD1-->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80"
+                class="card-img-top"
+                alt="..."
+              />
+  
+              <div class="text-right">
+                5.0<i class="fas fa-star" style="color: #ecc535"></i>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ content.title }}</h5>
+                <p class="card-text">
+                  {{ content.body }}
+                </p>
+                <p class="card-text">
+                  <small class="text-muted">Last updated {{ content.updated_at }}</small>
+                </p>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col">
+                    <a href="{% url 'content' id=content.id %}" class="btn btn-primary">More</a>
+                  </div>
+                  <div class="col">
+                    <div class="text-right">
+
+                      <button type="button" class="btn btn-outline-secondary">
+                        <a href="{% url 'save' content.id %}">
+                          {% if request.user not in content.savelist.all %}
+                          <i id="mark1" class="far fa-bookmark" ></i>
+                          {% else %}
+                          <i id="mark1" class="fas fa-bookmark" ></i>
+                          {% endif %}
+                        </a>
+                      </button>
+          
+                      <!-- I don't want to use like icon in liked page -->
+                      <!-- <button type="button" class="btn btn-outline-danger">
+                        <a href="{% url 'like' content.id %}">
+                          {% if request.user not in content.likelist.all %}
+                          <i id="like1"
+                           class="far fa-heart" style="color: red"></i>
+                          {% else %}
+                          <i id="like1"
+                          class="fas fa-heart" style="color: red"></i>
+                          {% endif %}
+                        </a>
+                      </button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+          {% endfor %}
+        </div>
+      
+
+
+
+
+
       </div>
-
-      <div class="row">
-        <!--CARD1-->
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80"
-              class="card-img-top"
-              alt="..."
-            />
-
-            <div class="text-right">
-              5.0<i class="fas fa-star" style="color: #ecc535"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col">
-                  <a href="{% url 'content' %}" class="btn btn-primary">More</a>
-                </div>
-                <div class="col">
-                  <div class="text-right">
-                    <button type="button" class="btn btn-outline-secondary">
-                        <i id="mark1"
-                        onclick="changeClass(this.id)"  class="fas fa-bookmark" ></i>
-                      </button>
-        
-                      <button type="button" class="btn btn-outline-secondary">
-                        <i id="like1"
-                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
-                      </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--CARD2-->
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1560856311-69382e596cd4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjR8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              class="card-img-top"
-              alt="..."
-            />
-
-            <div class="text-right">
-              5.0<i class="fas fa-star" style="color: #ecc535"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col">
-                  <a href="{% url 'content' %}" class="btn btn-primary">More</a>
-                </div>
-                <div class="col">
-                  <div class="text-right">
-                    <button type="button" class="btn btn-outline-secondary">
-                        <i id="mark2"
-                        onclick="changeClass(this.id)"  class="fas fa-bookmark" ></i>
-                      </button>
-        
-                      <button type="button" class="btn btn-outline-secondary">
-                        <i id="like2"
-                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
-                      </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--CARD3-->
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1549916438-5e8ec6964307?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzF8fGlzdGFuYnVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              class="card-img-top"
-              alt="..."
-            />
-
-            <div class="text-right">
-              5.0<i class="fas fa-star" style="color: #ecc535"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col">
-                  <a href="{% url 'content' %}" class="btn btn-primary">More</a>
-                </div>
-                <div class="col">
-                  <div class="text-right">
-                    <button type="button" class="btn btn-outline-secondary">
-                        <i id="mark3"
-                        onclick="changeClass(this.id)"  class="fas fa-bookmark" ></i>
-                      </button>
-        
-                      <button type="button" class="btn btn-outline-secondary">
-                        <i id="like3"
-                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
-                      </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <!--CARD1-->
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1518084823714-2f59a7315a39?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8aXN0YW5idWx8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              class="card-img-top"
-              alt="..."
-            />
-
-            <div class="text-right">
-              5.0<i class="fas fa-star" style="color: #ecc535"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col">
-                  <a href="{% url 'content' %}" class="btn btn-primary">More</a>
-                </div>
-                <div class="col">
-                  <div class="text-right">
-                    <button type="button" class="btn btn-outline-secondary">
-                        <i id="mark4"
-                        onclick="changeClass(this.id)"  class="fas fa-bookmark" ></i>
-                      </button>
-        
-                      <button type="button" class="btn btn-outline-secondary">
-                        <i id="like4"
-                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
-                      </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--CARD2-->
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1490079397423-a3931fd75940?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fGlzdGFuYnVsfGVufDB8fDB8&auto=format&fit=crop&w=500&q=60"
-              class="card-img-top"
-              alt="..."
-            />
-
-            <div class="text-right">
-              5.0<i class="fas fa-star" style="color: #ecc535"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col">
-                  <a href="{% url 'content' %}" class="btn btn-primary">More</a>
-                </div>
-                <div class="col">
-                  <div class="text-right">
-                    <button type="button" class="btn btn-outline-secondary">
-                        <i id="mark5"
-                        onclick="changeClass(this.id)"  class="fas fa-bookmark" ></i>
-                      </button>
-        
-                      <button type="button" class="btn btn-outline-secondary">
-                        <i id="like5"
-                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
-                      </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--CARD3-->
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80"
-              class="card-img-top"
-              alt="..."
-            />
-
-            <div class="text-right">
-              5.0<i class="fas fa-star" style="color: #ecc535"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="row">
-                <div class="col">
-                  <a href="{% url 'content' %}" class="btn btn-primary">More</a>
-                </div>
-                <div class="col">
-                  <div class="text-right">
-                    <button type="button" class="btn btn-outline-secondary">
-                        <i id="mark6"
-                        onclick="changeClass(this.id)"  class="fas fa-bookmark" ></i>
-                      </button>
-        
-                      <button type="button" class="btn btn-outline-secondary">
-                        <i id="like6"
-                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
-                      </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <script
       src="https://kit.fontawesome.com/e187c73c77.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript">
-        function changeClass(id) {
-          // Code examples from above
-          if (document.getElementById(id).classList.contains("far"))
-            document.getElementById(id).classList.toggle("fas");
-          else if (document.getElementById(id).classList.contains("fas"))
-          document.getElementById(id).classList.toggle("far");
-        }
-      </script>
-  </body>
   
-{% endblock content %}
+  </body>
+  {% endblock content %}

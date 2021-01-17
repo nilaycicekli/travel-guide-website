@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import ContentForm
@@ -69,7 +70,8 @@ def like(request,id):
     else:
        content.likelist.remove(user)
 
-    return redirect('content', id=id)
+    # return redirect('content', id=id)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 # Save / Discard
 @login_required
@@ -83,7 +85,8 @@ def save(request,id):
     else:
         content.savelist.remove(user)
 
-    return redirect('content', id=id)
+    # return redirect('content', id=id)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     
 
 

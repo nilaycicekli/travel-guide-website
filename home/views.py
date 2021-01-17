@@ -36,8 +36,7 @@ def add_content(request):
             content.author = user
             content.save()
             content.tag.set(form.cleaned_data['tag'])
-            # return redirect('content', id=content.id)
-            return redirect('content')
+            return redirect('content', id=content.id)
     else:
         form = ContentForm()
     return render(request,'add_content.html',{'form':form})

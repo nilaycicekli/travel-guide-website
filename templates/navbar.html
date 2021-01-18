@@ -3,30 +3,12 @@
       <a class="navbar-brand" href="{% url 'home' %}">xplaeu</a>
     
      
-      <form class="form-inline ml-auto" action="{% url 'search_result' %}">
-        <input
-          class="form-control mr-sm-2"
-          type="search" class="st-default-search-input" style="width: 500px; height: 100"
-          placeholder="Search"
-          aria-label="Search"
-          
-        />
+      <form id="search_form" name="gs" method="GET" action="{% url 'search_result' %}">
+        <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
       </form>
-    
-    
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-        
+
+ 
+
         <ul class="navbar-nav ml-auto">
           
           

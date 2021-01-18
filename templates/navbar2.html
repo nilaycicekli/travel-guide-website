@@ -15,17 +15,15 @@
           <a class="navbar-brand" href="{% url 'home' %}">xplaeu</a>
         
          
-          <form class="form-inline ml-auto" action="{% url 'search_result' %}">
-            <input
-              class="form-control mr-sm-2"
-              type="search" class="st-default-search-input" style="width: 500px; height: 100"
-              placeholder="Search"
-              aria-label="Search"
-              
-            />
+          <form id="search_form" name="gs" method="GET" action="{% url 'search_result' %}">
+            <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
           </form>
+    
         
+          
         
+
+
   
   
           
@@ -39,7 +37,7 @@
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
-          </button>
+            </button>
           
             <ul class="navbar-nav ml-auto">
   
@@ -53,6 +51,29 @@
             > Add Content
           </a>
               </li>
+
+
+
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#">HTML</a></li>
+                <li><a tabindex="-1" href="#">CSS</a></li>
+                <li class="dropdown-submenu">
+                  <a class="test" tabindex="-1" href="#">New dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                    <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                    <li class="dropdown-submenu">
+                      <a class="test" href="#">Another dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">3rd level dropdown</a></li>
+                        <li><a href="#">3rd level dropdown</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              
               
               <li class="nav-item dropdown">
                 <a
@@ -65,10 +86,7 @@
                   aria-expanded="false"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" 
-                
-                
-                
-                width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                   <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
                   <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                   <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>

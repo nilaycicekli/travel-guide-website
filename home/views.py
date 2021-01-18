@@ -6,23 +6,40 @@ from .forms import ContentForm
 from .models import Content
 from .models import Comment
 from .forms import CommentForm
+#from .filters import ContentFilter
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q
 # Create your views here.
 
+class SearchResultsView(ListView):
+    model = Content
+    template_name = 'search_result.html'
+
+    def get_queryset(self):  # new
+        query = self.request.GET.get('q')
+        object_list = Content.objects.filter(
+            Q(title__icontains=query) | Q(body__icontains=query)
+        )
+
+        return object_list
+
 def index(request):
+  
     return render(request,'index.html')
 
 def home(request):
     return render(request,'home.html')
 
-def search_result(request):
-    return render(request,'search_result.html')
+#def search_result(request):
+#   return render(request,'search_result.html')
 
 
 def content(request, id):
     content = get_object_or_404(Content, id=id)
     form = CommentForm()
-   
+   # myFilter=ContentFilter(request.GET, queryset=content)
     return render(request,'content.html',{"content":content,"form":form})
+
 
 
 @login_required

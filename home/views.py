@@ -157,3 +157,12 @@ def tag(request, name):
 
 
 
+def content_list_view(request):
+    queryset = Content.objects.all()
+    tags = Tag.objects.all()[:5]
+    
+    context = {
+        "object_list": queryset,
+        "tags":tags
+    }
+    return render(request, "all_content.html", context)

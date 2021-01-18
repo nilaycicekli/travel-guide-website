@@ -1,120 +1,110 @@
-
-
 <head>
-  
+
   <!------ dropdowndaki oku siliyo ---------->
-      <style> 
-          .dropdown-toggle::after { 
-              content: none; 
-          } 
-      </style> 
-  </head>
-  
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="{% url 'home' %}">xplaeu</a>
-        
-         
-          <form id="search_form" name="gs" method="GET" action="{% url 'search_result' %}">
-            <input type="text" name="q" class="searchText form-control" placeholder="type to search..." autocomplete="on">
-          </form>
-    
-        
-          
-        
+  <style>
+    .dropdown-toggle::after {
+      content: none;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="{% url 'home' %}">xplaeu</a>
 
 
-  
-  
-          
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <ul class="navbar-nav ml-auto">
-  
-              <li class="nav-item ">
-                <a
-                class="nav-link "
-              href="{% url 'add_content' %}"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-            > Add Content
-          </a>
-              </li>
+    <form id="search_form" name="gs" method="GET" action="{% url 'search_result' %}">
+      <input type="text" name="q" class="searchText form-control" placeholder="type to search..." autocomplete="on">
+    </form>
 
 
 
-              <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="#">HTML</a></li>
-                <li><a tabindex="-1" href="#">CSS</a></li>
-                <li class="dropdown-submenu">
-                  <a class="test" tabindex="-1" href="#">New dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-                    <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-                    <li class="dropdown-submenu">
-                      <a class="test" href="#">Another dropdown <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">3rd level dropdown</a></li>
-                        <li><a href="#">3rd level dropdown</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
 
-              
-              
-              <li class="nav-item dropdown">
-                <a
-                    class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                  width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                  <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
-                  <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
-                </svg>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a>
-                  <div class="dropdown-divider"></div>
-                </div>
-              </li>
-            </ul>
-  
-            
-  
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+    <ul class="navbar-nav ml-auto">
+      <!--AddContent-->
+
+      <li class="nav-item ">
+        <a class="nav-link " href="{% url 'add_content' %}" role="button" aria-haspopup="true" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle"
+            viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+          </svg>
+        </a>
+      </li>
+
+      <!--District Dropdown-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-compass"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+            <path d="M6.94 7.44l4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
+          </svg>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="">{{Content.get}}</a>
+
         </div>
-        </nav>
-  
-  
-      
-     
-         <script type="text/javascript">
-          function changeClass(id) {
-            // Code examples from above
-            if (document.getElementById(id).classList.contains("far"))
-              document.getElementById(id).classList.toggle("fas");
-          }
-        </script>
-  
-  </body>
+      </li>
+      <!--AllContent-->
+
+      <li class="nav-item ">
+        <a class="nav-link " href="{% url 'all_content' %}" role="button" aria-haspopup="true" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye"
+            viewBox="0 0 16 16">
+            <path
+              d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+          </svg>
+        </a>
+      </li>
+
+
+      <!--Profile Dropdown-->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path
+              d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+          </svg>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+    </ul>
+
+
+
+    </div>
+
+
+  </nav>
+
+
+
+
+
+</body>

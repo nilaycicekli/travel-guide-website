@@ -27,7 +27,8 @@ def index(request):
 def home(request):
     tags = Tag.objects.all()[:5]
     districts = District.objects.all()
-    return render(request,'home.html',{'tags':tags,'districts':districts})
+    contents=Content.objects.filter().order_by("-created_at")[:5]
+    return render(request,'home.html',{'tags':tags,'districts':districts,'contents':contents})
 
 #def search_result(request):
 #   return render(request,'search_result.html')

@@ -1,28 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'home' %}">xplaeu</a>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'home' %}">xplaeu</a>
-    
-     
-      <form id="search_form" name="gs" method="GET" action="{% url 'search_result' %}">
-        <input type="text" name="q" class="searchText form-control" placeholder="type to search..." autocomplete="on">
-      </form>
 
- 
+  <form id="search_form" name="gs" method="GET" action="{% url 'search_result' %}">
+    <input type="text" name="q" class="searchText form-control" placeholder="type to search..." autocomplete="on">
+  </form>
 
-        <ul class="navbar-nav ml-auto">
+
+
+  <ul class="navbar-nav ml-auto">
+
+    <li class="nav-item ">
+      <a class="nav-link " href="{% url 'add_content' %}" role="button" aria-haspopup="true" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle"
+          viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+      </a>
+    </li>
+
+    <!--District Dropdown-->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-compass"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+          <path d="M6.94 7.44l4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
+        </svg>
+      </a>
+      <!-- <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="">{{Content.get}}</a>
+
+      </div> -->
+      <div class="dropdown-menu dropdown-menu-right">
+        {% for district in districts  %}
           
-          
-          
+        <a class="dropdown-item" href="{% url 'district' district.id %}">{{district.name}}</a>
+        <div class="dropdown-divider"></div>
+        {% endfor %}
 
-         
-      <a class="nav-link active" href="{% url 'login' %}">Log In</a>
-     </li> 
-     <li class="nav-item active"></li>
-      <a class="nav-link active" href="{% url 'register' %}">Sign Up</a>
-  </li> 
-        </ul>
-    </div>
-    </nav>
+      </div>
+    </li>
 
 
 
+    <a class="nav-link active" href="{% url 'login' %}">Log In</a>
+    </li>
+    <li class="nav-item active"></li>
+    <a class="nav-link active" href="{% url 'register' %}">Sign Up</a>
+    </li>
+  </ul>
+  </div>
+</nav>

@@ -62,7 +62,7 @@
         <div class="dropdown-menu dropdown-menu-right">
           {% for district in districts  %}
             
-          <a class="dropdown-item" href="">{{district.name}}</a>
+          <a class="dropdown-item" href="{% url 'district' district.id %}">{{district.name}}</a>
           <div class="dropdown-divider"></div>
           {% endfor %}
 

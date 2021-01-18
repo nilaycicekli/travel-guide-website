@@ -81,7 +81,7 @@
             <br>
             <p><strong>Tags</strong></p>
             {% for tag in content.tag.all %}
-            <a class="btn btn-warning" href="">{{tag.name}}</a>
+            <a class="btn btn-warning" href="{% url 'tag' tag.id %}">{{tag.name}}</a>
             {% endfor %}
             <br>
             <br>

@@ -12,9 +12,10 @@ urlpatterns=[
     path('content/<int:id>/delete',views.delete_content,name="delete_content"), # to delete the content
     path('content/<int:id>/like',views.like,name="like"), # to like/unlike the content
     path('content/<int:id>/save',views.save,name="save"), # to save/discard the content
-    path('comment/<int:id>',views.add_comment,name="add_comment"),#to add comment
-    path('comment/<int:id>/remove',views.remove_comment,name="remove_comment"),#to remove the comment
-    path('district/<int:id>',views.district,name="district"),#to remove the comment
+    path('comment/<int:id>',views.add_comment,name="add_comment"), # to add comment
+    path('comment/<int:id>/remove',views.remove_comment,name="remove_comment"), # to remove the comment
+    path('district/<int:id>',views.district,name="district"), # to filter districts
+    path('tag/<str:name>',views.tag,name="tag"), # to filter tags
     
 ]
 

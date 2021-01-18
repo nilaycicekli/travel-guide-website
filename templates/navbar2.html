@@ -16,7 +16,7 @@
         
          
           <form id="search_form" name="gs" method="GET" action="{% url 'search_result' %}">
-            <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
+            <input type="text" name="q" class="searchText form-control" placeholder="type to search..." autocomplete="on">
           </form>
     
         
@@ -108,6 +108,13 @@
   
   
       
-  
+     
+         <script type="text/javascript">
+          function changeClass(id) {
+            // Code examples from above
+            if (document.getElementById(id).classList.contains("far"))
+              document.getElementById(id).classList.toggle("fas");
+          }
+        </script>
   
   </body>

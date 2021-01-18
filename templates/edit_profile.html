@@ -137,8 +137,10 @@
                           </button></a
                         >
                       </form>
+                      <br>
+                      <br>
                       <form method="POST" action="" class="form">
-                        {% csrf_token %}
+                        <!--{% csrf_token %}
                         <div class="row">
                           <div class="col-12 col-sm-6 mb-3">
                             <div class="mb-2"><b>Change Password</b></div>
@@ -180,10 +182,10 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                         <a
                           class="btn btn-primary profile-button"
-                          href="{% url 'profile' %}"
+                          href="{% url 'password_change' %}"
                         >
                           Change Password</a
                         >

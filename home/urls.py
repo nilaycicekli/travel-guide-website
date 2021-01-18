@@ -1,10 +1,12 @@
 from django.urls import path
 from . import views 
+from .views import  SearchResultsView
 
 urlpatterns=[
     path('',views.home,name="index"),
     path('home',views.home,name="home"),
-    path('search_result',views.search_result,name="search_result"),
+    path('search/', SearchResultsView.as_view(), name='search_result'),
+    #path('search_result',views.search_result,name="search_result"),
     path('content/<int:id>',views.content,name="content"), # to view content details
     path('content/new',views.add_content,name="add_content"), # to create and publish new content
     path('content/<int:id>/delete',views.delete_content,name="delete_content"), # to delete the content

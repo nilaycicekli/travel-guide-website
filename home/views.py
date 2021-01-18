@@ -100,9 +100,11 @@ def add_comment(request,id):
     user=request.user
     content = get_object_or_404(Content, id=id)
     if request.method=="POST":
+        
         form=CommentForm(request.POST)
         if form.is_valid():
             comment=form.save(commit=False)
+            comment.content = content
             comment.user=user
             comment.save()
             return redirect("content",id=content.id)

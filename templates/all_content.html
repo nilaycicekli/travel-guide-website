@@ -23,27 +23,17 @@
   <div class="container">
     <!-- carousel -->
 
-
-   
-   
-
- 
-
-    
-
     <!-- tag clouds -->
     <div class="container mx-3 my-5 text-center">
+      {% for tag in tags  %}
+        
+      <a href="{% url 'tag' tag.name %}">
       <button type="button" class="btn btn-outline-info">
-        Food and Drink
+       {{tag.name}}
       </button>
-      <button type="button" class="btn btn-outline-info">
-        Entertainement
-      </button>
-      <button type="button" class="btn btn-outline-info">
-        Art and Culture
-      </button>
-      <button type="button" class="btn btn-outline-info">Photos</button>
-      <button type="button" class="btn btn-outline-info">Travel</button>
+    </a>
+      {% endfor %}
+  
     </div>
 
     <!-- all results -->
@@ -82,14 +72,33 @@
                 <div class="col">
                   <div class="text-right">
                     <button type="button" class="btn btn-outline-secondary">
-                        <i id="m1"
-                        onclick="changeClass(this.id)"  class="far fa-bookmark" ></i>
-                      </button>
+                      <a href="{% url 'save' result.id %}">
+                       
+                        {% if request.user not in result.savelist.all %}
+                        <i id="mark1" class="far fa-bookmark" ></i>
+                        {% else %}
+                        <i id="mark1" class="fas fa-bookmark" ></i>
+                        {% endif %}
+      
+                       
+                      </a>
+                     
+                    </button>
         
-                      <button type="button" class="btn btn-outline-secondary">
-                        <i id="l1"
-                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
-                      </button>
+                    <button type="button" class="btn btn-outline-danger">
+                      <a href="{% url 'like' result.id %}">
+                       
+                        {% if request.user not in result.likelist.all %}
+                        <i id="like1"
+                         class="far fa-heart" style="color: red"></i>
+                        {% else %}
+                        <i id="like1"
+                        onclick="changeClass(this.id)" class="fas fa-heart" style="color: red"></i>
+                        {% endif %}
+      
+                       
+                      </a>
+                    </button>
                   </div>
                 </div>
               </div>

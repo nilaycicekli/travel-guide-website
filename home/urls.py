@@ -12,6 +12,7 @@ urlpatterns=[
     path('content/<int:id>/save',views.save,name="save"), # to save/discard the content
     path('comment/<int:id>',views.add_comment,name="add_comment"),#to add comment
     path('comment/<int:id>/remove',views.remove_comment,name="remove_comment"),#to remove the comment
+    path('district/<int:id>',views.district,name="district"),#to remove the comment
     
 ]
 

@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import ContentForm
-from .models import Content
-from .models import Comment
-from .forms import CommentForm
+from .forms import ContentForm, CommentForm
+from .models import Content, District, Comment, Tag
 # Create your views here.
 
 def index(request):
@@ -124,7 +122,21 @@ def remove_comment(request,id):
     return redirect("content",id=comment.content.id)
 
 
+def district(request, id):
+    try:
+        district = get_object_or_404(District, id=id)
+        result = district.content.all()
+        return render(request,'search_result.html',{'object_list':result})
+    except:
+        return HttpResponse("Not Found")
 
+def tag(request, name):
+    try:
+        tag = get_object_or_404(Tag, name=name)
+        result = tag.content.all()
+        return render(request,'search_result.html',{'object_list':result})
+    except:
+        return HttpResponse("Not Found")
 
 
 

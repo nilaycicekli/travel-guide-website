@@ -7,7 +7,7 @@ class Content(models.Model):
     body= models.TextField(max_length=200, null=True, blank=True, default="This is my first blog post!")
     pic = models.ImageField(upload_to="content",default="", blank=True, null=True)
     author= models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="content")
-    district=models.ForeignKey('District', null=True, on_delete=models.CASCADE,related_name="districtContent")
+    district=models.ForeignKey('District', null=True, on_delete=models.CASCADE,related_name="content")
     tag=models.ManyToManyField('Tag',  related_name="content", blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)

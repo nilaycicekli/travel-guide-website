@@ -5,6 +5,7 @@ from .views import  SearchResultsView
 urlpatterns=[
     path('',views.home,name="index"),
     path('home',views.home,name="home"),
+    path('all_content',views.content_list_view,name="all_content"),
     path('search/', SearchResultsView.as_view(), name='search_result'),
     #path('search_result',views.search_result,name="search_result"),
     path('content/<int:id>',views.content,name="content"), # to view content details

@@ -157,3 +157,9 @@ def tag(request, name):
 
 
 
+def content_list_view(request):
+    queryset = Content.objects.all()
+    context = {
+        "object_list": queryset
+    }
+    return render(request, "all_content.html", context)

@@ -55,8 +55,16 @@
             <path d="M6.94 7.44l4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
           </svg>
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
+        <!-- <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="">{{Content.get}}</a>
+
+        </div> -->
+        <div class="dropdown-menu dropdown-menu-right">
+          {% for district in districts  %}
+            
+          <a class="dropdown-item" href="">{{district.name}}</a>
+          <div class="dropdown-divider"></div>
+          {% endfor %}
 
         </div>
       </li>

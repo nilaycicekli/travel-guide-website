@@ -26,7 +26,8 @@ def index(request):
 
 def home(request):
     tags = Tag.objects.all()[:5]
-    return render(request,'home.html',{'tags':tags})
+    districts = District.objects.all()
+    return render(request,'home.html',{'tags':tags,'districts':districts})
 
 #def search_result(request):
 #   return render(request,'search_result.html')

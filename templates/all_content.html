@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+{% load static  %}
+
+    <!-- <link rel='stylesheet' href='https://unpkg.com/bootstrap@4.0.0/dist/css/bootstrap.css'> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">  -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+    <!-- <link rel='stylesheet' href='https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css'> -->
+ {% block link %}
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">  -->
+
+ <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+ <style>
+   .far {
+     color: red;
+   }
+ </style>
+ {% endblock link %}
+ {% block content %}
+   
+
+ <body>
+  <div class="container">
+    <!-- carousel -->
+
+
+   
+   
+
+ 
+
+    
+
+    <!-- tag clouds -->
+    <div class="container mx-3 my-5 text-center">
+      <button type="button" class="btn btn-outline-info">
+        Food and Drink
+      </button>
+      <button type="button" class="btn btn-outline-info">
+        Entertainement
+      </button>
+      <button type="button" class="btn btn-outline-info">
+        Art and Culture
+      </button>
+      <button type="button" class="btn btn-outline-info">Photos</button>
+      <button type="button" class="btn btn-outline-info">Travel</button>
+    </div>
+
+    <!-- all results -->
+    <div class="container mx-3 my-3 center">
+      <p><b> All Search Results</b></p>
+
+      <div class="row">
+
+    {% for result in object_list %}
+        <!--CARD1-->
+        <div class="col">
+          <div class="card">
+            {% if result.pic %}
+          <img src="{{ result.pic.url }}" class="card-img-top"
+          alt="..."/>
+          {% endif %}
+           
+
+            <div class="text-right">
+              5.0<i class="fas fa-star" style="color: #ecc535"></i>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{result.title}}</h5>
+              <p class="card-text">
+               {{result.body}}
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated {{result.update_at}} mins ago</small>
+              </p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <a href=" " class="btn btn-primary">More</a>
+                </div>
+                <div class="col">
+                  <div class="text-right">
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i id="m1"
+                        onclick="changeClass(this.id)"  class="far fa-bookmark" ></i>
+                      </button>
+        
+                      <button type="button" class="btn btn-outline-secondary">
+                        <i id="l1"
+                        onclick="changeClass(this.id)" class="far fa-heart" style="color: red"></i>
+                      </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+     
+    <!-- all results end here -->
+  </div>
+  <!-- main div ends here -->
+
+  <script type="text/javascript">
+    function changeClass(id) {
+      // Code examples from above
+      if (document.getElementById(id).classList.contains("far"))
+        document.getElementById(id).classList.toggle("fas");
+        else if (document.getElementById(id).classList.contains("fas"))
+        document.getElementById(id).classList.toggle("far");
+    }
+  </script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  </body>
+
+ {% endblock content %}
+
+

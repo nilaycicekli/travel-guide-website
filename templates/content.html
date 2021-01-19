@@ -105,6 +105,15 @@
             </div>
             <div class="col-sm-10">
               <h4>{{comment.user}} <small>{{comment.created_at}}</small></h4>
+              {% if request.user == comment.user %}
+              <p><a href="{% url 'remove_comment' comment.id %}">
+
+                <i id="commentdelete"
+                 class="fas fa-trash" style="color: black"></i>
+              
+
+              </a></p>
+                {% endif %}
               <p>
                 {{comment.text}}
               </p>

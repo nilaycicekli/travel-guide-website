@@ -7,6 +7,10 @@ from .models import Content, District, Comment, Tag
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q
 
+
+districts = District.objects.all()
+
+
 # Create your views here.
 class SearchResultsView(ListView):
     model = Content
@@ -38,7 +42,7 @@ def content(request, id):
     content = get_object_or_404(Content, id=id)
     form = CommentForm()
    # myFilter=ContentFilter(request.GET, queryset=content)
-    return render(request,'content.html',{"content":content,"form":form})
+    return render(request,'content.html',{"content":content,"form":form,'districts':districts})
 
 
 
@@ -55,7 +59,7 @@ def add_content(request):
             return redirect('content', id=content.id)
     else:
         form = ContentForm()
-    return render(request,'add_content.html',{'form':form})
+    return render(request,'add_content.html',{'form':form,'districts':districts,})
 
 @login_required
 def delete_content(request,id):
@@ -127,7 +131,7 @@ def add_comment(request,id):
             return redirect("content",id=content.id)
     else:
         form=CommentForm()
-    return render(request,'content.html',{'form':form,'content':content})
+    return render(request,'content.html',{'form':form,'content':content,'districts':districts})
 
 
 
@@ -145,7 +149,7 @@ def district(request, id):
     try:
         district = get_object_or_404(District, id=id)
         result = district.content.all()
-        return render(request,'search_result.html',{'object_list':result})
+        return render(request,'search_result.html',{'object_list':result,'districts':districts})
     except:
         return HttpResponse("Not Found")
 
@@ -153,7 +157,7 @@ def tag(request, name):
     try:
         tag = get_object_or_404(Tag, name=name)
         result = tag.content.all()
-        return render(request,'search_result.html',{'object_list':result})
+        return render(request,'search_result.html',{'object_list':result,'districts':districts})
     except:
         return HttpResponse("Not Found")
 
@@ -165,6 +169,7 @@ def content_list_view(request):
     
     context = {
         "object_list": queryset,
-        "tags":tags
+        "tags":tags,
+        'districts':districts
     }
     return render(request, "all_content.html", context)

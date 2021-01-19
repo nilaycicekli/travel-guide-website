@@ -1,88 +1,102 @@
-{% extends "index.html" %}
-{% load static %}
-{% block link %}
-  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-  
-{% endblock link %}
-{% block content %}
-<div class="container"> 
-  <br/>
-  <div style="align-items: center;">
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" style="size: fit;" >
-      {% for content in contents  %}
-      {% if forloop.first %}
-      <div class="carousel-item active">
-      {% else %}
-      <div class="carousel-item">
-      {% endif %}
-      <a href="{% url 'content' content.id %}">
-      {% if content.pic %}
-      <img class="d-block w-100" style="width: 500px; height: 500px;" 
-      src="{{ content.pic.url }}" alt="{{ content.title }}">
-      {% endif %}
-    </a>
+{% extends "index.html" %} {% load static %} {% block link %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+
+{% endblock link %} {% block content %}
+<div class="container">
+  <br />
+  <div style="align-items: center">
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" style="size: fit">
+        {% for content in contents %} {% if forloop.first %}
+        <div class="carousel-item active">
+          {% else %}
+          <div class="carousel-item">
+            {% endif %}
+            <a href="{% url 'content' content.id %}">
+              {% if content.pic %}
+              <img
+                class="d-block w-100"
+                style="width: 500px; height: 500px"
+                src="{{ content.pic.url }}"
+                alt="{{ content.title }}"
+              />
+              {% endif %}
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
+    </div>
+
+    <!-- tag clouds -->
+    <div class="container mx-3 my-5 text-center">
+      {% for tag in tags %}
+
+      <a href="{% url 'tag' tag.name %}">
+        <button type="button" class="btn btn-outline-info">{{tag.name}}</button>
+      </a>
       {% endfor %}
-    
-     
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-
-  <!-- tag clouds -->
-  <div class="container mx-3 my-5 text-center">
-    {% for tag in tags  %}
-      
-    <a href="{% url 'tag' tag.name %}">
-    <button type="button" class="btn btn-outline-info">
-     {{tag.name}}
-    </button>
-  </a>
-    {% endfor %}
-
-  </div>
-
-</div>
-    <h3>Who are we?</h3>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum
-    </p>
-
-    <h3>What is the aim?</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum
-    </p>
-
-    <div class="text-center">
-      <a href="{% url 'all_content' %}" class="button btn btn-info bg-dark btn-lg"> Explore!</a>
     </div>
   </div>
-{% endblock  %}
- 
+  <h3>Who are we?</h3>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+  </p>
+
+  <h3>What is the aim?</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+  </p>
+
+  <div class="text-center">
+    <a
+      href="{% url 'all_content' %}"
+      class="button btn btn-info bg-dark btn-lg"
+    >
+      Explore!</a
+    >
+  </div>
+</div>
+{% endblock %}
